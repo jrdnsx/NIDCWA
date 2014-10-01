@@ -10,7 +10,7 @@ namespace NIDCWA.Controllers
     public class UsersController : FoundationController
     {
         private UserDBContext db = new UserDBContext();
-
+        test test2
         // GET: /Users/
         public ActionResult Index()
         {
