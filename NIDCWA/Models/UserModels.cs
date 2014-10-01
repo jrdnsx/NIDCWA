@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 
 namespace NIDCWA.Models
 {
@@ -46,5 +44,10 @@ namespace NIDCWA.Models
         [DataType(DataType.Password)]
         [Display(Name = "Password Confirmation")]
         public string passwordConfirmation { get; set; }
+    }
+
+    public class UserDBContext : DbContext
+    { 
+        public DbSet<UserBasicViewModel> Users { get; set; }
     }
 }
