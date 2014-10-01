@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NIDCWA", "NIDCWA\NIDCWA.csproj", "{F189755F-AA9E-4EC9-84A0-264235907852}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpers", "Helpers\Helpers.csproj", "{5D15E777-AE7A-442B-AB47-7EA24478BF2D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F189755F-AA9E-4EC9-84A0-264235907852}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F189755F-AA9E-4EC9-84A0-264235907852}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F189755F-AA9E-4EC9-84A0-264235907852}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D15E777-AE7A-442B-AB47-7EA24478BF2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D15E777-AE7A-442B-AB47-7EA24478BF2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D15E777-AE7A-442B-AB47-7EA24478BF2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D15E777-AE7A-442B-AB47-7EA24478BF2D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,40 @@
+﻿@model NIDCWA.Models.UserSaveViewModel
+@using NIDCWA.Models;
+
+@{
+    ViewBag.Title = "User Registration - NEC CapTran";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string Action = "Save";
+    object routeValues = null;
+    if (Model != null)
+    {
+        routeValues = new { ID = Model.ID };
+    }
+}
+
+<h2>User Registration</h2>
+@using (@Html.BeginForm(Action, "User", routeValues, FormMethod.Post, new { role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.username, new { @class = "form-group" })
+        @Html.TextBoxFor(model => model.username, new { @class = "disabled form-control", style = "width:30%" })
+        @Html.ValidationMessageFor(model => model.username)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.password, new { @class = "form-group" })
+        @Html.PasswordFor(model => model.password, new { @class = "form-control", style = "width:30%" })
+        @Html.ValidationMessageFor(model => model.password)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.passwordConfirmation, new { @class = "form-group" })
+        @Html.PasswordFor(model => model.passwordConfirmation, new { @class = "form-control", style = "width:30%" })
+        @Html.ValidationMessageFor(model => model.passwordConfirmation)
+    </div>
+    <button type="submit" class="btn btn-default">
+        Submit
+    </button>
+}
