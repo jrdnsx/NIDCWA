@@ -8,6 +8,7 @@ namespace NIDCWA
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            // JavaScript
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
@@ -23,9 +24,12 @@ namespace NIDCWA
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+            // CSS
+            bundles.Add(new StyleBundle("~/Content/bootstrapcss").Include("~/Content/bootstrap.css"));
+            bundles.Add(new StyleBundle("~/Content/logincss").Include("~/Content/login.css"));
+            bundles.Add(new StyleBundle("~/Content/mastercss").Include("~/Content/master.css"));
+            // CSS pre-built by Visual Studio
+            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862
