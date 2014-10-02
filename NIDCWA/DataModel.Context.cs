@@ -25,6 +25,13 @@ namespace NIDCWA
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Module> Module { get; set; }
+        public virtual DbSet<ModuleDetail> ModuleDetail { get; set; }
+        public virtual DbSet<Role> Role { get; set; }
+        public virtual DbSet<RoleDetail> RoleDetail { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<ModuleRole> ModuleRole { get; set; }
+        public virtual DbSet<RoleUser> RoleUser { get; set; }
     }
 }

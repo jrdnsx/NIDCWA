@@ -9,12 +9,20 @@ namespace NIDCWA.Controllers
 {
     public class UsersController : FoundationController
     {
-        private UserDBContext db = new UserDBContext();
-
         // GET: /Users/
         public ActionResult Index()
         {
-            return View(db.Users.ToList());
+            //var users = from u in entities.User.ToList()
+            //            select new UserBasicViewModel
+            //            {
+            //                username = u.Username
+            //            };
+            IEnumerable<UserBasicViewModel> users = from u in entities.User.ToList()
+                                                    select new UserBasicViewModel
+                                                    {
+                                                        username = u.Username
+                                                    };
+            return View("Index", users);
         }
     }
 }

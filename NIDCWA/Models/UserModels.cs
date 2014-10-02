@@ -45,9 +45,4 @@ namespace NIDCWA.Models
         [Display(Name = "Password Confirmation")]
         public string passwordConfirmation { get; set; }
     }
-
-    public class UserDBContext : DbContext
-    { 
-        public DbSet<UserBasicViewModel> Users { get; set; }
-    }
 }

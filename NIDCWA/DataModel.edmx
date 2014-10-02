@@ -5,6 +5,70 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="NECCaptran_DevModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Module">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Parent" Type="tinyint" />
+          <Property Name="Action" Type="varchar" MaxLength="16" />
+          <Property Name="Controller" Type="varchar" MaxLength="32" />
+          <Property Name="Sequence" Type="tinyint" Nullable="false" />
+          <Property Name="Visibility" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="ModuleDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Module" Type="tinyint" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NECCaptran_Dev.dbo.ModuleRole' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ModuleRole">
+          <Key>
+            <PropertyRef Name="Module" />
+            <PropertyRef Name="Role" />
+          </Key>
+          <Property Name="Module" Type="tinyint" Nullable="false" />
+          <Property Name="Role" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" Nullable="false" />
+          <Property Name="Active" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoleDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NECCaptran_Dev.dbo.RoleUser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="RoleUser">
+          <Key>
+            <PropertyRef Name="Role" />
+            <PropertyRef Name="User" />
+          </Key>
+          <Property Name="Role" Type="tinyint" Nullable="false" />
+          <Property Name="User" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="ID" />
@@ -15,13 +79,74 @@
           <Property Name="Active" Type="tinyint" Nullable="false" />
         </EntityType>
         <EntityContainer Name="NECCaptran_DevModelStoreContainer">
+          <EntitySet Name="Module" EntityType="Self.Module" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ModuleDetail" EntityType="Self.ModuleDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleDetail" EntityType="Self.RoleDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ModuleRole" EntityType="Self.ModuleRole" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ModuleRole].[Module] AS [Module], 
+    [ModuleRole].[Role] AS [Role]
+    FROM [dbo].[ModuleRole] AS [ModuleRole]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="RoleUser" EntityType="Self.RoleUser" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [RoleUser].[Role] AS [Role], 
+    [RoleUser].[User] AS [User]
+    FROM [dbo].[RoleUser] AS [RoleUser]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="NECCaptran_DevModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Module">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Parent" Type="Byte" />
+          <Property Name="Action" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="Controller" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Sequence" Type="Byte" Nullable="false" />
+          <Property Name="Visibility" Type="Byte" />
+        </EntityType>
+        <EntityType Name="ModuleDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Module" Type="Byte" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" />
+          <Property Name="Active" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="RoleDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="ID" />
@@ -31,8 +156,31 @@
           <Property Name="Password" Type="String" MaxLength="64" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="Active" Type="Byte" Nullable="false" />
         </EntityType>
+        <EntityType Name="ModuleRole">
+          <Key>
+            <PropertyRef Name="Module" />
+            <PropertyRef Name="Role" />
+          </Key>
+          <Property Name="Module" Type="Byte" Nullable="false" />
+          <Property Name="Role" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoleUser">
+          <Key>
+            <PropertyRef Name="Role" />
+            <PropertyRef Name="User" />
+          </Key>
+          <Property Name="Role" Type="Byte" Nullable="false" />
+          <Property Name="User" Type="Int32" Nullable="false" />
+        </EntityType>
         <EntityContainer Name="NECCaptran_DevEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Module" EntityType="Self.Module" />
+          <EntitySet Name="ModuleDetail" EntityType="Self.ModuleDetail" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="RoleDetail" EntityType="Self.RoleDetail" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="ModuleRole" EntityType="Self.ModuleRole" />
+          <EntitySet Name="RoleUser" EntityType="Self.RoleUser" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -40,6 +188,55 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="NECCaptran_DevModelStoreContainer" CdmEntityContainer="NECCaptran_DevEntities">
+          <EntitySetMapping Name="Module">
+            <EntityTypeMapping TypeName="NECCaptran_DevModel.Module">
+              <MappingFragment StoreEntitySet="Module">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Parent" ColumnName="Parent" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="Controller" ColumnName="Controller" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="Visibility" ColumnName="Visibility" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ModuleDetail">
+            <EntityTypeMapping TypeName="NECCaptran_DevModel.ModuleDetail">
+              <MappingFragment StoreEntitySet="ModuleDetail">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Module" ColumnName="Module" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="NECCaptran_DevModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleDetail">
+            <EntityTypeMapping TypeName="NECCaptran_DevModel.RoleDetail">
+              <MappingFragment StoreEntitySet="RoleDetail">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="NECCaptran_DevModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="NECCaptran_DevModel.User">
               <MappingFragment StoreEntitySet="User">
@@ -47,6 +244,22 @@
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ModuleRole">
+            <EntityTypeMapping TypeName="NECCaptran_DevModel.ModuleRole">
+              <MappingFragment StoreEntitySet="ModuleRole">
+                <ScalarProperty Name="Module" ColumnName="Module" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleUser">
+            <EntityTypeMapping TypeName="NECCaptran_DevModel.RoleUser">
+              <MappingFragment StoreEntitySet="RoleUser">
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="User" ColumnName="User" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
