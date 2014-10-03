@@ -102,7 +102,7 @@ namespace NIDCWA.Controllers
                     entities.User.Add(user);
                     entities.SaveChanges();
                 }
-                return RedirectToAction("Login", "User");
+                return RedirectToAction("index", "Users");
             }
             return View(model);
         }

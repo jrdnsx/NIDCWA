@@ -6,9 +6,13 @@
 
 <h2>Users List</h2>
 <hr />
-<button class="btn btn-primary btn-block" style="width:7%">
-    + Add User
-</button>
+@Html.ActionLink("+ Add User", "Save", "User", null, 
+    new {
+        @class = "btn btn-primary btn-block",
+        @Style = "width: 8%",
+        Role="button",
+        title = "+ Add User"
+    })
 <div class="table-responsive">
     <table class="table table-hover text-center">
         <thead>
@@ -29,7 +33,7 @@
                         @Html.DisplayFor(modelItem => item.username)
                     </td>
                     <td>
-                        Edit | Delete
+                        @Html.ActionLink("Edit", "Save", "User", new { id = item.ID }, null)
                     </td>
                 </tr>
             }
