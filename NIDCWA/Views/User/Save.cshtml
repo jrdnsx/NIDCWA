@@ -33,7 +33,12 @@
     <button type="submit" class="btn btn-lg btn-primary btn-block" style="width:30%">
         Submit
     </button>
-    <button class="btn btn-lg btn-danger btn-block" style="width:30%">
-        Cancel
-    </button>
+    
+    @Html.ActionLink("Cancel", "Index", "Users", null,
+            new 
+            { 
+                @class = "btn btn-lg btn-danger btn-block",
+                @style = "width: 30%",
+                role = "button"
+            })
 }

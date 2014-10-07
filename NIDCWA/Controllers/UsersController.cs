@@ -22,7 +22,7 @@ namespace NIDCWA.Controllers
                                                     {
                                                         ID = u.ID,
                                                         username = u.Username,
-                                                        password = u.Password
+                                                        active = u.Active
                                                     };
             return View("Index", users);
         }

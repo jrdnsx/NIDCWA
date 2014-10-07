@@ -115,5 +115,38 @@ namespace NIDCWA.Controllers
             }
             return View(model);
         }
+
+        [HttpPost]
+        public JsonResult Activate()
+        {
+            int error = 1;
+
+            if (Request.IsAjaxRequest())
+            {
+                int ID;
+                int.TryParse(Request["id"].ToString(), out ID);
+
+                byte active;
+                byte.TryParse(Request["active"].ToString(), out active);
+                if (active == 1)
+                {
+                    active = 0;
+                }
+                else
+                {
+                    active = 1;
+                }
+
+                User user = (from u in entities.User
+                             where u.ID == ID
+                             select u).Single();
+                user.Active = active;
+                entities.SaveChanges();
+
+                error = 0;
+            }
+
+            return Json(new { error = error });
+        }
     }
 }
