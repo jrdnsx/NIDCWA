@@ -20,7 +20,9 @@ namespace NIDCWA.Controllers
             IEnumerable<UserBasicViewModel> users = from u in entities.User.ToList()
                                                     select new UserBasicViewModel
                                                     {
-                                                        username = u.Username
+                                                        ID = u.ID,
+                                                        username = u.Username,
+                                                        password = u.Password
                                                     };
             return View("Index", users);
         }

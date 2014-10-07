@@ -87,6 +87,7 @@ namespace NIDCWA.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(UserSaveViewModel model)
         {
             if (ModelState.IsValid)
@@ -100,6 +101,14 @@ namespace NIDCWA.Controllers
                     user.Password = Helpers.SHA256.Encode(model.password);
                     user.Active = 1;
                     entities.User.Add(user);
+                    entities.SaveChanges();
+                }
+                else
+                {
+                    User user = (from u in entities.User
+                                 where u.ID == model.ID
+                                 select u).Single();
+                    user.Username = model.username;
                     entities.SaveChanges();
                 }
                 return RedirectToAction("index", "Users");
