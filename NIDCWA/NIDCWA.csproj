@@ -171,6 +171,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AccountMicrosoftController.cs" />
     <Compile Include="Controllers\FoundationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -287,21 +288,21 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\_RemoveAccountPartial.cshtml" />
-    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\AccountMicrosoft\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\AccountMicrosoft\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\AccountMicrosoft\_RemoveAccountPartial.cshtml" />
+    <Content Include="Views\AccountMicrosoft\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\AccountMicrosoft\ConfirmEmail.cshtml" />
+    <Content Include="Views\AccountMicrosoft\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\AccountMicrosoft\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\AccountMicrosoft\ForgotPassword.cshtml" />
+    <Content Include="Views\AccountMicrosoft\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\AccountMicrosoft\Login.cshtml" />
+    <Content Include="Views\AccountMicrosoft\Register.cshtml" />
+    <Content Include="Views\AccountMicrosoft\ResetPassword.cshtml" />
+    <Content Include="Views\AccountMicrosoft\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\AccountMicrosoft\SendCode.cshtml" />
+    <Content Include="Views\AccountMicrosoft\VerifyCode.cshtml" />
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
@@ -313,6 +314,7 @@
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\Save.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
