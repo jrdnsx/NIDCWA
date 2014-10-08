@@ -38,7 +38,7 @@ namespace NIDCWA.Controllers
 
                     FormsAuthentication.SetAuthCookie(user.ID.ToString(), false);
 
-                    return RedirectToAction("", "");
+                    return RedirectToAction("Index", "Users");
                 }
                 else
                 {

@@ -4,6 +4,23 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section NavBarActive {
+    <li><a href="#">Home</a></li>
+    <li class="dropdown active">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configuration <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">User Configuration</li>
+            <li class="active"><a href="#">User</a></li>
+            <li><a href="#">Role</a></li>
+            <li class="divider"></li>
+            <li class="dropdown-header">CapTran Configuration</li>
+            <li><a href="#">Sub-menu 1</a></li>
+            <li><a href="#">Sub-menu 2</a></li>
+        </ul>
+    </li>
+    <li><a href="#about">About</a></li>
+}
+
 <h2>Users List</h2>
 <hr />
     <div class="row">

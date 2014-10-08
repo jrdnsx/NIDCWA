@@ -13,15 +13,15 @@ using NIDCWA.Models;
 namespace NIDCWA.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountMicrosoftController : Controller
     {
         private ApplicationUserManager _userManager;
 
-        public AccountController()
+        public AccountMicrosoftController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountMicrosoftController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
             UserManager = userManager;
             SignInManager = signInManager;
