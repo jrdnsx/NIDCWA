@@ -12,11 +12,6 @@ namespace NIDCWA.Controllers
         // GET: /Users/
         public ActionResult Index()
         {
-            //var users = from u in entities.User.ToList()
-            //            select new UserBasicViewModel
-            //            {
-            //                username = u.Username
-            //            };
             IEnumerable<UserBasicViewModel> users = from u in entities.User.ToList()
                                                     select new UserBasicViewModel
                                                     {

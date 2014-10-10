@@ -406,8 +406,8 @@ namespace NIDCWA.Controllers
             return View();
         }
 
-        #region Helpers
-        // Used for XSRF protection when adding external logins
+            #region Helpers
+            // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
         private IAuthenticationManager AuthenticationManager
