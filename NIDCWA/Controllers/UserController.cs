@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using System.Web.Security;
 using System.Data.Entity;
 using NIDCWA.Models;
+using System.Data.Entity.Validation;
+using System.Text;
 
 namespace NIDCWA.Controllers
 {
@@ -53,6 +55,7 @@ namespace NIDCWA.Controllers
                     User user = new User();
                     user.Username = model.username;
                     user.Password = Helpers.SHA256.Encode(model.password);
+                    //user.Password = Helpers.PasswordHash.CreateHash(model.password);
                     user.Active = 1;
                     entities.User.Add(user);
                     entities.SaveChanges();
